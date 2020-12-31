@@ -30,6 +30,7 @@
 		B9FFD4511FDEE6F700CEE593 /* MapaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FFD4501FDEE6F700CEE593 /* MapaViewController.swift */; };
 		DE9CAD5E9B9136DED2DA173A /* Pods_Agenda.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD2E12ABDE38F1762A97ED70 /* Pods_Agenda.framework */; };
 		DFA1377E259D73110065364C /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA1377D259D73110065364C /* Firebase.swift */; };
+		DFA13780259D7E3A0065364C /* Configuracao.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA1377F259D7E3A0065364C /* Configuracao.swift */; };
 		DFD0F3A22593B2A4005D2AFD /* LigacaoTelefonica.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD0F3A12593B2A4005D2AFD /* LigacaoTelefonica.swift */; };
 		DFD0F3A42593B462005D2AFD /* Safari.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD0F3A32593B462005D2AFD /* Safari.swift */; };
 		DFD0F3A62593BAC2005D2AFD /* Filtro.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD0F3A52593BAC2005D2AFD /* Filtro.swift */; };
@@ -63,6 +64,7 @@
 		B9FFD4501FDEE6F700CEE593 /* MapaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapaViewController.swift; sourceTree = "<group>"; };
 		BD2E12ABDE38F1762A97ED70 /* Pods_Agenda.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Agenda.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFA1377D259D73110065364C /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
+		DFA1377F259D7E3A0065364C /* Configuracao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuracao.swift; sourceTree = "<group>"; };
 		DFD0F3A12593B2A4005D2AFD /* LigacaoTelefonica.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LigacaoTelefonica.swift; sourceTree = "<group>"; };
 		DFD0F3A32593B462005D2AFD /* Safari.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Safari.swift; sourceTree = "<group>"; };
 		DFD0F3A52593BAC2005D2AFD /* Filtro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filtro.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 				DFD0F3A12593B2A4005D2AFD /* LigacaoTelefonica.swift */,
 				DFD0F3A32593B462005D2AFD /* Safari.swift */,
 				DFD0F3A52593BAC2005D2AFD /* Filtro.swift */,
+				DFA1377F259D7E3A0065364C /* Configuracao.swift */,
 			);
 			path = Componentes;
 			sourceTree = "<group>";
@@ -406,6 +409,7 @@
 				DFD0F3A42593B462005D2AFD /* Safari.swift in Sources */,
 				B9518EFC1FD9BCEB00EBAFA5 /* MenuOpcoesAlunos.swift in Sources */,
 				B939B9B81FDAC2630084A557 /* Mensagem.swift in Sources */,
+				DFA13780259D7E3A0065364C /* Configuracao.swift in Sources */,
 				B9D565A71FE14ECA00BDA536 /* Notificacoes.swift in Sources */,
 				DFD0F3A22593B2A4005D2AFD /* LigacaoTelefonica.swift in Sources */,
 				65AB2CB220471E9200F07B9B /* Repositorio.swift in Sources */,
