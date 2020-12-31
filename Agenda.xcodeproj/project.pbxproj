@@ -29,6 +29,7 @@
 		B9EA19FB1FDEBEAD00403CE0 /* Localizacao.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EA19FA1FDEBEAD00403CE0 /* Localizacao.swift */; };
 		B9FFD4511FDEE6F700CEE593 /* MapaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FFD4501FDEE6F700CEE593 /* MapaViewController.swift */; };
 		DE9CAD5E9B9136DED2DA173A /* Pods_Agenda.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD2E12ABDE38F1762A97ED70 /* Pods_Agenda.framework */; };
+		DFA1377E259D73110065364C /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA1377D259D73110065364C /* Firebase.swift */; };
 		DFD0F3A22593B2A4005D2AFD /* LigacaoTelefonica.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD0F3A12593B2A4005D2AFD /* LigacaoTelefonica.swift */; };
 		DFD0F3A42593B462005D2AFD /* Safari.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD0F3A32593B462005D2AFD /* Safari.swift */; };
 		DFD0F3A62593BAC2005D2AFD /* Filtro.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD0F3A52593BAC2005D2AFD /* Filtro.swift */; };
@@ -61,6 +62,7 @@
 		B9EA19FA1FDEBEAD00403CE0 /* Localizacao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizacao.swift; sourceTree = "<group>"; };
 		B9FFD4501FDEE6F700CEE593 /* MapaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapaViewController.swift; sourceTree = "<group>"; };
 		BD2E12ABDE38F1762A97ED70 /* Pods_Agenda.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Agenda.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DFA1377D259D73110065364C /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
 		DFD0F3A12593B2A4005D2AFD /* LigacaoTelefonica.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LigacaoTelefonica.swift; sourceTree = "<group>"; };
 		DFD0F3A32593B462005D2AFD /* Safari.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Safari.swift; sourceTree = "<group>"; };
 		DFD0F3A52593BAC2005D2AFD /* Filtro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filtro.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				03AA17621FC8433E003CB2B8 /* Home */,
 				03AA17691FC84A2D003CB2B8 /* Alunos */,
 				B9FFD44E1FDEE6D300CEE593 /* Mapa */,
+				DFA1377B259D72D40065364C /* Firebase */,
 				A28100181FD5C2E300E1BDF1 /* Componentes */,
 				65F277D320068C1900A8F1BF /* Assets */,
 				03AA17511FC84154003CB2B8 /* Main.storyboard */,
@@ -241,6 +244,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		DFA1377B259D72D40065364C /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				DFA1377C259D72F70065364C /* Model */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		DFA1377C259D72F70065364C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DFA1377D259D73110065364C /* Firebase.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -373,6 +392,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFA1377E259D73110065364C /* Firebase.swift in Sources */,
 				03AA176D1FC8515A003CB2B8 /* AlunoViewController.swift in Sources */,
 				65AB2CA820470DA000F07B9B /* AlunoAPI.swift in Sources */,
 				65F277D92006901C00A8F1BF /* Pino.swift in Sources */,
