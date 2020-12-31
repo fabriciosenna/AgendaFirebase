@@ -44,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MessagingDelegate {
     }
     
     func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {
-       print(remoteMessage.appData)
+        Firebase().serializaMensagem(mensagem: remoteMessage)
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

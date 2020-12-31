@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import Firebase
 
 class Firebase: NSObject {
 
@@ -15,13 +16,18 @@ class Firebase: NSObject {
         
         guard let url = Configuracao().getUrlPadrao() else {return}
         
-        Alamofire.request("\(url)/api/firebase/dispositivo",method: .post,headers:["token":token]).responseData {(response) in
-            if response.error == nil{
-                print ("Token Enviado com sucesso")
-            }else{
-                print("ERROR:---")
-                print(response.error!)
-            }
+        Alamofire.request("\(url)/api/firebase/dispositivo",method: .post,headers:["token":token]).responseData
+    }
+    
+    func serializaMensagem(mensagem: MessagingRemoteMessage){
+        guard let respostaDoFirebase = mensagem.appData["alunoSync"] else {return}
+        guard let data = respostaDoFirebase.data(using: .utf8) else {return}
+        
+        do{
+            guard let mensagem = try JSONSerialization.jsonObject(with: data, options: []) as? Dictionary<String,Any> else {return}
+            guard let listaDeAlunos = mensagem["alunos"] as? Array<Dictionary<String,Any>> else{return}
+        }catch{
+            print(error.localizedDescription)
         }
     }
 }
