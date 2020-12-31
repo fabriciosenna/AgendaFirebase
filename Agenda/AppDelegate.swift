@@ -8,10 +8,12 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 import Firebase
+import FirebaseMessaging
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate,MessagingDelegate {
     
     enum TipoDeShortcut:String {
         case cadastrarAluno = "CadastrarAluno"
@@ -23,8 +25,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         FirebaseApp.configure()
+        
+        let autorizacao:UNAuthorizationOptions = [ .badge,.alert, .sound]
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: autorizacao){
+            (_, _) in
+            Messaging.messaging().delegate = self
+        }
+        
+        application.registerForRemoteNotifications()
 
         return true
+    }
+    
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+        <#code#>
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

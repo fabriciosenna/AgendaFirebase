@@ -7,5 +7,6 @@ target 'Agenda' do
   pod 'Alamofire', '~> 4.6'
   
   pod 'Firebase/Core'
+  pod 'Firebase/Messaging'
 
 end
