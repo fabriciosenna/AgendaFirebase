@@ -5,5 +5,7 @@ target 'Agenda' do
   use_frameworks!
   
   pod 'Alamofire', '~> 4.6'
+  
+  pod 'Firebase/Core'
 
 end
