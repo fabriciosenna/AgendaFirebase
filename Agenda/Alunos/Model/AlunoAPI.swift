@@ -21,8 +21,6 @@ class AlunoAPI: NSObject {
     // MARK: - GET
     
     func recuperaAlunos(completion:@escaping() -> Void) {
-        
-
         Alamofire.request("\(url)/api/aluno", method: .get).responseJSON { (response) in
             switch response.result {
             case .success:
@@ -31,6 +29,7 @@ class AlunoAPI: NSObject {
                     for dicionarioDeAluno in listaDeAlunos {
                         AlunoDAO().salvaAluno(dicionarioDeAluno: dicionarioDeAluno)
                     }
+                    AlunoUserDefaults().salvaVersao(resposta)
                     completion()
                 }
                 break

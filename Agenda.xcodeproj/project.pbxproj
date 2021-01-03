@@ -34,6 +34,7 @@
 		DFD0F3A22593B2A4005D2AFD /* LigacaoTelefonica.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD0F3A12593B2A4005D2AFD /* LigacaoTelefonica.swift */; };
 		DFD0F3A42593B462005D2AFD /* Safari.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD0F3A32593B462005D2AFD /* Safari.swift */; };
 		DFD0F3A62593BAC2005D2AFD /* Filtro.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD0F3A52593BAC2005D2AFD /* Filtro.swift */; };
+		DFEFCC6B25A2794400BFCED8 /* AlunoUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEFCC6A25A2794400BFCED8 /* AlunoUserDefaults.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,7 @@
 		DFD0F3A12593B2A4005D2AFD /* LigacaoTelefonica.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LigacaoTelefonica.swift; sourceTree = "<group>"; };
 		DFD0F3A32593B462005D2AFD /* Safari.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Safari.swift; sourceTree = "<group>"; };
 		DFD0F3A52593BAC2005D2AFD /* Filtro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filtro.swift; sourceTree = "<group>"; };
+		DFEFCC6A25A2794400BFCED8 /* AlunoUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlunoUserDefaults.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +179,7 @@
 				65AB2CA720470DA000F07B9B /* AlunoAPI.swift */,
 				65AB2CB320471F0400F07B9B /* AlunoDAO.swift */,
 				65AB2CB120471E9200F07B9B /* Repositorio.swift */,
+				DFEFCC6A25A2794400BFCED8 /* AlunoUserDefaults.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 				DFD0F3A22593B2A4005D2AFD /* LigacaoTelefonica.swift in Sources */,
 				65AB2CB220471E9200F07B9B /* Repositorio.swift in Sources */,
 				B9FFD4511FDEE6F700CEE593 /* MapaViewController.swift in Sources */,
+				DFEFCC6B25A2794400BFCED8 /* AlunoUserDefaults.swift in Sources */,
 				03AA174E1FC84154003CB2B8 /* AppDelegate.swift in Sources */,
 				B9EA19FB1FDEBEAD00403CE0 /* Localizacao.swift in Sources */,
 				658B1AA82006456B006D944C /* AutenticacaoLocal.swift in Sources */,
