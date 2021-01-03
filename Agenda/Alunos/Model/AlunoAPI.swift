@@ -25,11 +25,7 @@ class AlunoAPI: NSObject {
             switch response.result {
             case .success:
                 if let resposta = response.result.value as? Dictionary<String, Any> {
-                    guard let listaDeAlunos = resposta["alunos"] as? Array<Dictionary<String, Any>> else { return }
-                    for dicionarioDeAluno in listaDeAlunos {
-                        AlunoDAO().salvaAluno(dicionarioDeAluno: dicionarioDeAluno)
-                    }
-                    AlunoUserDefaults().salvaVersao(resposta)
+                    self.serializaAlunos(resposta)
                     completion()
                 }
                 break
@@ -41,11 +37,15 @@ class AlunoAPI: NSObject {
         }
     }
     
-    func recuperaUltimosAlunos(_ versao: String){
-        
+    func recuperaUltimosAlunos(_ versao: String, completion:@escaping() -> Void){
         Alamofire.request(url+"/api/aluno/diff",method: .get,headers:["datahora":versao]).responseJSON {(response) in switch response.result{
                 case .success:
                     print("Ultimos alunos")
+                    if let resposta = response.result.value as? Dictionary<String,Any>
+                    {
+                        self.serializaAlunos(resposta)
+                    }
+                    completion()
                     break
                 case .failure:
                      print("Falha")
@@ -81,6 +81,16 @@ class AlunoAPI: NSObject {
                     break
                 }
             }
+    }
+    
+    // MARK: - Serialização
+    
+    func serializaAlunos(_ resposta:Dictionary<String,Any>){
+        guard let listaDeAlunos = resposta["alunos"] as? Array<Dictionary<String, Any>> else { return }
+        for dicionarioDeAluno in listaDeAlunos {
+            AlunoDAO().salvaAluno(dicionarioDeAluno: dicionarioDeAluno)
+        }
+        AlunoUserDefaults().salvaVersao(resposta)
     }
 }
 

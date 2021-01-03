@@ -18,4 +18,9 @@ class AlunoUserDefaults: NSObject {
         }
         preferencias.set(versao, forKey: "ultima-versao")
     }
+    
+    func recuperaUltimaVersao() -> String? {
+        let versao = preferencias.object(forKey: "ultima-versao") as? String
+        return versao
+    }
 }
