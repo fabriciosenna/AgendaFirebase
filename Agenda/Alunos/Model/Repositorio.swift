@@ -29,9 +29,16 @@ class Repositorio: NSObject {
         }
     }
     
-    func salvaAluno(aluno:Dictionary<String, String>) {
-        AlunoAPI().salvaAlunosNoServidor(parametros: [aluno])
+    func salvaAluno(aluno:Dictionary<String, Any>) {
+        var dicionario = aluno
         AlunoDAO().salvaAluno(dicionarioDeAluno: aluno)
+        AlunoAPI().salvaAlunosNoServidor(parametros: [aluno]){(salvo) in
+            if salvo{
+                dicionario["sincronizado"] = true
+                AlunoDAO().salvaAluno(dicionarioDeAluno: dicionario)
+            }
+        }
+
     }
     
     func deletaAluno(aluno: Aluno){
@@ -55,7 +62,9 @@ class Repositorio: NSObject {
             ]
             listaDeParametros.append(parametros)
         }
-        AlunoAPI().salvaAlunosNoServidor(parametros: listaDeParametros)
+        AlunoAPI().salvaAlunosNoServidor(parametros: listaDeParametros){(salvo)
+            // setar o atributo sincronizado para verdadeiro
+        }
     }
 
 }
