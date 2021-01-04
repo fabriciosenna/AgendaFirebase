@@ -88,7 +88,17 @@ class AlunoAPI: NSObject {
     func serializaAlunos(_ resposta:Dictionary<String,Any>){
         guard let listaDeAlunos = resposta["alunos"] as? Array<Dictionary<String, Any>> else { return }
         for dicionarioDeAluno in listaDeAlunos {
-            AlunoDAO().salvaAluno(dicionarioDeAluno: dicionarioDeAluno)
+            guard let status = dicionarioDeAluno["desativado"] as? Bool else {return}
+            if status{
+                guard let idDoAluno = dicionarioDeAluno["id"] as? String else{return}
+                guard let UUIDAluno = UUID(uuidString: idDoAluno) else {return}
+                if let aluno = AlunoDAO().recuperaAlunos().filter({ $0.id == UUIDAluno}).first{
+                    AlunoDAO().deletaAluno(aluno: aluno)
+                }
+            }else{
+              AlunoDAO().salvaAluno(dicionarioDeAluno: dicionarioDeAluno)
+            }
+   
         }
         AlunoUserDefaults().salvaVersao(resposta)
     }
