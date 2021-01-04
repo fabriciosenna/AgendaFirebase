@@ -11,7 +11,7 @@ import UIKit
 class Repositorio: NSObject {
     
     func recuperaAlunos(completion:@escaping(_ listaDeAlunos:Array<Aluno>) -> Void) {
-        var alunos = AlunoDAO().recuperaAlunos()
+        var alunos = AlunoDAO().recuperaAlunos().filter({$0.desativado == false})
         if alunos.count == 0 {
             AlunoAPI().recuperaAlunos {
                 alunos = AlunoDAO().recuperaAlunos()
@@ -52,12 +52,24 @@ class Repositorio: NSObject {
     }
     
     func sincronizaAlunos(){
+        enviaAlunosNaoSincronizados()
+        sincronizaAlunosDeletados()
+    }
+    
+    func enviaAlunosNaoSincronizados(){
         let alunos = AlunoDAO().recuperaAlunos().filter({$0.sincronizado == false })
         let listaDeParametros = criaJsonAluno(alunos)
         AlunoAPI().salvaAlunosNoServidor(parametros: listaDeParametros){(salvo) in
             for aluno in listaDeParametros{
                 self.atualizaAlunoSincronizado(aluno)
             }
+        }
+    }
+    
+    func sincronizaAlunosDeletados(){
+        let alunos = AlunoDAO().recuperaAlunos().filter({$0.desativado == true})
+        for aluno in alunos{
+            deletaAluno(aluno: aluno)
         }
     }
 
