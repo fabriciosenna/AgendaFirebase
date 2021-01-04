@@ -30,28 +30,41 @@ class Repositorio: NSObject {
     }
     
     func salvaAluno(aluno:Dictionary<String, Any>) {
-        var dicionario = aluno
         AlunoDAO().salvaAluno(dicionarioDeAluno: aluno)
         AlunoAPI().salvaAlunosNoServidor(parametros: [aluno]){(salvo) in
             if salvo{
-                dicionario["sincronizado"] = true
-                AlunoDAO().salvaAluno(dicionarioDeAluno: dicionario)
+                self.atualizaAlunoSincronizado(aluno)
             }
         }
 
     }
     
     func deletaAluno(aluno: Aluno){
+        aluno.desativado = true
+        AlunoDAO().atualizaContexto()
         guard let id = aluno.id else {return}
-        AlunoAPI().deletaAluno(id: String(describing: id).lowercased())
-        AlunoDAO().deletaAluno(aluno: aluno)
+        AlunoAPI().deletaAluno(id: String(describing: id).lowercased()){ (apagado) in
+            if apagado{
+                AlunoDAO().deletaAluno(aluno: aluno)
+            }
+            
+        }
     }
     
     func sincronizaAlunos(){
-        let alunos = AlunoDAO().recuperaAlunos()
+        let alunos = AlunoDAO().recuperaAlunos().filter({$0.sincronizado == false })
+        let listaDeParametros = criaJsonAluno(alunos)
+        AlunoAPI().salvaAlunosNoServidor(parametros: listaDeParametros){(salvo) in
+            for aluno in listaDeParametros{
+                self.atualizaAlunoSincronizado(aluno)
+            }
+        }
+    }
+
+    func criaJsonAluno(_ alunos:Array<Aluno>) -> Array<[String:Any]>{
         var listaDeParametros:Array<Dictionary<String,String>> = []
         for aluno in alunos{
-            guard let id = aluno.id else {return}
+            guard let id = aluno.id else { return [] }
             let parametros:Dictionary<String,String> = [
                 "id": String(describing: id).lowercased(),
                 "nome": aluno.nome ?? "",
@@ -62,9 +75,12 @@ class Repositorio: NSObject {
             ]
             listaDeParametros.append(parametros)
         }
-        AlunoAPI().salvaAlunosNoServidor(parametros: listaDeParametros){(salvo)
-            // setar o atributo sincronizado para verdadeiro
-        }
+        return listaDeParametros
     }
-
+    
+    func atualizaAlunoSincronizado(_ aluno:Dictionary<String,Any>){
+        var dicionario = aluno
+        dicionario["sincronizado"] = true
+        AlunoDAO().salvaAluno(dicionarioDeAluno: dicionario)
+    }
 }
